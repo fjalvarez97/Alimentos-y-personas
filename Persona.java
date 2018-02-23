@@ -57,7 +57,7 @@ public class Persona
         }
         return caloriasIngeridas;
     }
-    
+
     /**
      * Metodo getter de calorias,
      * @return int Devuelve el numero de calorias
@@ -67,4 +67,45 @@ public class Persona
         return calorias;
     }
 
+    /**
+     * Metodo para preguntar cosas a la persona
+     * @param pregunta - La pregunta que le quieres hacer a la persona.
+     * @return String - Devuelve la respuesta (Si / No).
+     */
+    public String contestar(String pregunta)
+    {
+        String respuesta = "";
+        if (esHombre && calorias <= 10*peso + 6*altura + 5*edad + 5)
+        {
+            if (pregunta.length()% 3 == 0)
+            {
+                respuesta = "SI";
+            }
+            else
+            {
+                respuesta = "NO";
+            }
+        }
+        else if(calorias <= 10*peso + 6*altura + 5*edad - 161)
+        {
+            if (pregunta.length()% 3 == 0)
+            {
+                respuesta = "SI";
+            }
+            else
+            {
+                respuesta = "NO";
+            }
+        }
+        if (esHombre && calorias > 10*peso + 6*altura + 5*edad + 5 || pregunta.contains(nombre))
+        {
+            respuesta = pregunta.toUpperCase();
+        }
+        else if(calorias > 10*peso + 6*altura + 5*edad - 161)
+        {
+            respuesta = pregunta.toUpperCase();
+        }
+        System.out.println(respuesta);
+        return respuesta;
+    }
 }
