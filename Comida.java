@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 /**
- * Write a description of class Comida here.
+ * Esta clase simula un alimento con sus calorias.
  *
  * @author Fran Alvarez
  * @version 1.0

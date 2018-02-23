@@ -101,6 +101,7 @@ public class Persona
                 respuesta = "NO";
             }
         }
+        
         if (esHombre && calorias > 10*peso + 6*altura + 5*edad + 5 || pregunta.contains(nombre))
         {
             respuesta = pregunta.toUpperCase();
@@ -112,7 +113,7 @@ public class Persona
         System.out.println(respuesta);
         return respuesta;
     }
-    
+
     /**
      *  Metodo que devuelve el nombre de la comida con mayores calorias consumida.
      *  @return String - El nombre de la comida ingerida de mayores calorias.
@@ -122,18 +123,15 @@ public class Persona
         String nombreAlimento = null;
         if (listaComidaIngerida.size() > 0)
         {
-            for (int i = 0; i < listaComidaIngerida.size(); i++)
+            Comida comidaMasCalorias = listaComidaIngerida.get(0);
+            for (Comida comidaActual : listaComidaIngerida)
             {
-                Comida primeraComida = listaComidaIngerida.get(0);
-                for (Comida comidaActual : listaComidaIngerida)
+                if (comidaActual.getCalorias() >= comidaMasCalorias.getCalorias())
                 {
-                    if (comidaActual.getCalorias() >= primeraComida.getCalorias())
-                    {
-                        primeraComida = comidaActual;
-                    }
+                    comidaMasCalorias = comidaActual;
                 }
-                nombreAlimento = primeraComida.getNombre();
             }
+            nombreAlimento = comidaMasCalorias.getNombre();
         }
         System.out.println(nombreAlimento);
         return nombreAlimento;
