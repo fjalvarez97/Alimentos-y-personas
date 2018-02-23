@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Write a description of class Comida here.
  *
@@ -28,5 +28,14 @@ public class Comida
     public int getCalorias()
     {
         return calorias;
+    }
+    
+    /**
+     * Metodo getter del campo calorias.
+     * @return String - Devuelve el nombre de la comida.
+     */
+    public String getNombre()
+    {
+        return nombre;
     }
 }

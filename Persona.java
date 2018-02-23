@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Esta clase simula una persona.
  *
@@ -14,6 +14,7 @@ public class Persona
     private int altura;
     private int edad;
     private int calorias;
+    private ArrayList<Comida> listaComidaIngerida;
     /**
      * Constructor de objetos de la clase persona.
      * @param nombre - Nombre de la persona.
@@ -30,6 +31,7 @@ public class Persona
         this.altura = altura;
         this.edad = edad;
         calorias = 0;
+        listaComidaIngerida = new ArrayList<>();
     }
 
     /**
@@ -45,11 +47,13 @@ public class Persona
         {
             caloriasIngeridas = comida.getCalorias();
             calorias += comida.getCalorias();
+            listaComidaIngerida.add(comida);
         }
         else if(calorias <= 10*peso + 6*altura + 5*edad - 161)
         {
             caloriasIngeridas = comida.getCalorias();
             calorias += comida.getCalorias();
+            listaComidaIngerida.add(comida);
         }
         else
         {
@@ -107,5 +111,31 @@ public class Persona
         }
         System.out.println(respuesta);
         return respuesta;
+    }
+    
+    /**
+     *  Metodo que devuelve el nombre de la comida con mayores calorias consumida.
+     *  @return String - El nombre de la comida ingerida de mayores calorias.
+     */
+    public String getAlimentoMasCaloricoConsumido()
+    {
+        String nombreAlimento = null;
+        if (listaComidaIngerida.size() > 0)
+        {
+            for (int i = 0; i < listaComidaIngerida.size(); i++)
+            {
+                Comida primeraComida = listaComidaIngerida.get(0);
+                for (Comida comidaActual : listaComidaIngerida)
+                {
+                    if (comidaActual.getCalorias() >= primeraComida.getCalorias())
+                    {
+                        primeraComida = comidaActual;
+                    }
+                }
+                nombreAlimento = primeraComida.getNombre();
+            }
+        }
+        System.out.println(nombreAlimento);
+        return nombreAlimento;
     }
 }
